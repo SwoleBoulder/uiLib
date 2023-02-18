@@ -6,9 +6,6 @@
 
 local release = "Beta 0.0"
 local notifDuration = 5
-local uiFolder = "ui"
-local configFolder = uiFolder.."/Config"
-local configExtension = ".uif"
 
 -- Services
 
@@ -29,7 +26,37 @@ local camera = workspace.CurrentCamera
 
 -- ui Management
 
-local Library = {}
+local Library = {
+	Flags = {},
+	Themes = {
+		Default = {}
+	},
+	currentTheme = "Default",
+	uiFolder = nil,
+	saveConfig = false
+}
+
+local icons = {}
+
+local success, response = pcall(function()
+	icons = HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json")).icons
+end)
+
+if not success then
+	warn("\nuiLib - Failed to load Icons. Error code: " .. response .. "\n")
+end
+
+local function GetIcon(iconName)
+	if icons[iconName] ~= nil then
+		return icons[iconName]
+	else
+		return nil
+	end
+end
+
+local ui = Instance.new("ScreenGui")
+ui.Name = "ui"
+
 
 -- Functions
 
