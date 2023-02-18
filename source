@@ -1,0 +1,36 @@
+--[[
+
+	ui
+
+]]
+
+local release = "Beta 0.0"
+local notifDuration = 5
+local uiFolder = "ui"
+local configFolder = uiFolder.."/Config"
+local configExtension = ".uif"
+
+-- Services
+
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local HttpService = game:GetService("HttpService")
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local CoreGui = game:GetService("CoreGui")
+
+-- Variables
+
+local globalTweenInfo = TweenInfo.new(.5, Enum.EasingStyle.Quint)
+
+-- Object Variables
+
+local camera = workspace.CurrentCamera
+
+-- ui Management
+
+local Library = {}
+
+-- Functions
+
+-- Misc
