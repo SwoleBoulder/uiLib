@@ -1,3 +1,3 @@
---EXAMPLE
-
 local ui = loadstring("game:HttpGet(https://raw.githubusercontent.com/SwoleBoulder/uiLib/main/source)")()
+
+-- the code currently does nothing
