@@ -57,6 +57,30 @@ end
 local ui = Instance.new("ScreenGui")
 ui.Name = "ui"
 
+if gethui then
+	ui.Parent = gethui()
+elseif syn.protect_gui then
+	syn.protect_gui(ui)
+	ui.Parent = CoreGui
+elseif CoreGui:FindFirstChild("RobloxGui") then
+	ui.Parent = CoreGui:FindFirstChild("RobloxGui")
+else
+	ui.Parent = CoreGui
+end
+
+if gethui then
+	for _, GUI in ipairs(gethui():GetChildren()) do
+		if GUI.Name == ui.Name and GUI ~= ui then
+			GUI:Destroy()
+		end
+	end
+else
+	for _, GUI in ipairs(CoreGui:GetChildren()) do
+		if GUI.Name == ui.Name and GUI ~= ui then
+			GUI:Destroy()
+		end
+	end
+end
 
 -- Functions
 
